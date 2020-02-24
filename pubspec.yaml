@@ -16,6 +16,7 @@ dependencies:
     git:
       url: https://github.com/fidelitycommunications/flutter_dtmf.git
   flutter_masked_text: ^0.8.0
+  flutter_icons: ^1.0.0+1
   #auto_size_text: ^2.0.2+1
 
 

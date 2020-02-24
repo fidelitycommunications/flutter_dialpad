@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:flutter_dtmf/flutter_dtmf.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 
 class DialPad extends StatefulWidget {
   final ValueSetter<String> makeCall;
@@ -271,19 +272,24 @@ class _DialButtonState extends State<DialButton>
                                                   : Colors.white))
                                     ],
                                   )
-                                : Padding(
-                                    padding: EdgeInsets.only(top: 8),
-                                    child: Text(
-                                      widget.title,
-                                      style: TextStyle(
-                                          fontSize: widget.title == "*" &&
-                                                  widget.subtitle == null
-                                              ? screenSize.height * 0.0862069
-                                              : sizeFactor / 2,
-                                          color: widget.textColor != null
-                                              ? widget.textColor
-                                              : Colors.white),
-                                    ))
+//                                : Padding(
+//                                    padding: EdgeInsets.only(top: 8),
+//                                    child: Text(
+//                                      widget.title,
+//                                      style: TextStyle(
+//                                          fontSize: widget.title == "*" &&
+//                                                  widget.subtitle == null
+//                                              ? screenSize.height * 0.0862069
+//                                              : sizeFactor / 2,
+//                                          color: widget.textColor != null
+//                                              ? widget.textColor
+//                                              : Colors.white),
+//                                    ))
+                                  : widget.title == "*"
+                                    ? Icon(MaterialCommunityIcons.asterisk,
+                                    size: sizeFactor / 3, color: widget.iconColor != null ? widget.iconColor : Colors.white)
+                                    : Icon(MaterialCommunityIcons.pound,
+                                    size: sizeFactor / 3, color: widget.iconColor != null ? widget.iconColor : Colors.white)
                             : Icon(widget.icon,
                                 size: sizeFactor / 2, color: widget.iconColor != null ? widget.iconColor : Colors.white)),
                   ))),
