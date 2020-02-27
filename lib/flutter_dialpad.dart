@@ -107,7 +107,7 @@ class _DialPadState extends State<DialPad> {
       child: Column(
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
             child: TextFormField(
               readOnly: true,
               style: TextStyle(color: Colors.white, fontSize: sizeFactor / 2),
@@ -244,34 +244,35 @@ class _DialButtonState extends State<DialButton>
         }
       },
       child: ClipOval(
-          child: AnimatedBuilder(
-              animation: _colorTween,
-              builder: (context, child) => Container(
-                    color: _colorTween.value,
-                    height: sizeFactor,
-                    width: sizeFactor,
-                    child: Center(
-                        child: widget.icon == null
-                            ? widget.subtitle != null
-                                ? Column(
-                                    children: <Widget>[
-                                      Padding(
-                                          padding: EdgeInsets.only(top: 8),
-                                          child: Text(
-                                            widget.title,
-                                            style: TextStyle(
-                                                fontSize: sizeFactor / 2,
-                                                color: widget.textColor != null
-                                                    ? widget.textColor
-                                                    : Colors.white),
-                                          )),
-                                      Text(widget.subtitle,
-                                          style: TextStyle(
-                                              color: widget.textColor != null
-                                                  ? widget.textColor
-                                                  : Colors.white))
-                                    ],
-                                  )
+        child: AnimatedBuilder(
+          animation: _colorTween,
+          builder: (context, child) => Container(
+            color: _colorTween.value,
+            height: sizeFactor,
+            width: sizeFactor,
+            child: Center(
+              child: widget.icon == null
+                ? widget.subtitle != null
+                ? Column(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(top: 8),
+                    child: Text(
+                      widget.title,
+                      style: TextStyle(
+                        fontSize: sizeFactor / 2,
+                        color: widget.textColor != null
+                          ? widget.textColor
+                          : Colors.white),
+                    )),
+                  Text(widget.subtitle,
+                    style: TextStyle(
+                      fontSize: sizeFactor / 7,
+                      color: widget.textColor != null
+                        ? widget.textColor
+                        : Colors.white))
+                ],
+              )
 //                                : Padding(
 //                                    padding: EdgeInsets.only(top: 8),
 //                                    child: Text(
@@ -285,14 +286,14 @@ class _DialButtonState extends State<DialButton>
 //                                              ? widget.textColor
 //                                              : Colors.white),
 //                                    ))
-                                  : widget.title == "*"
-                                    ? Icon(MaterialCommunityIcons.asterisk,
-                                    size: sizeFactor / 3, color: widget.iconColor != null ? widget.iconColor : Colors.white)
-                                    : Icon(MaterialCommunityIcons.pound,
-                                    size: sizeFactor / 3, color: widget.iconColor != null ? widget.iconColor : Colors.white)
-                            : Icon(widget.icon,
-                                size: sizeFactor / 2, color: widget.iconColor != null ? widget.iconColor : Colors.white)),
-                  ))),
+                : widget.title == "*"
+                ? Icon(MaterialCommunityIcons.asterisk,
+                size: sizeFactor / 3, color: widget.iconColor != null ? widget.iconColor : Colors.white)
+                : Icon(MaterialCommunityIcons.pound,
+                size: sizeFactor / 3, color: widget.iconColor != null ? widget.iconColor : Colors.white)
+                : Icon(widget.icon,
+                size: sizeFactor / 2, color: widget.iconColor != null ? widget.iconColor : Colors.white)),
+          ))),
     );
   }
 }
